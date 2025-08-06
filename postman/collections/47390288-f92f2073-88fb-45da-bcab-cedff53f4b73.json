@@ -1,0 +1,367 @@
+{
+	"info": {
+		"_postman_id": "47390288-f92f2073-88fb-45da-bcab-cedff53f4b73",
+		"name": "teste serve rest",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "usuarios cadastrados",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "535fe0d4-a3a9-4d04-8683-3c83f98a203d",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"string_you_want_to_search\");\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"id": "47390288-1c7514b3-68e0-46ac-ac6d-b475d7be7f56",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/usuarios/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"usuarios",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "criar usuario",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "390f8df5-8337-4687-8c59-24f479807c61",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"id": "47390288-50de66d0-cd75-4265-b8e0-e4e6ef55e431",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"nome\": \"charly\",\r\n  \"email\": \"charly@qa.com.br\",\r\n  \"password\": \"teste\",\r\n  \"administrador\": \"true\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/usuarios/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"usuarios",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "usuario id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "5366ae80-ab14-491c-8423-74ece7328563",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"id": "47390288-63c6db51-bf3f-47fe-9fcf-6b7d89ed8ca2",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/usuarios/r6YIOxrJ1nEZpawu",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"usuarios",
+						"r6YIOxrJ1nEZpawu"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete usuario",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "62a7aaf0-81f8-4acc-b7f9-e91dcec7132b",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"id": "47390288-4eaf4d5d-6913-4c49-bbfc-ca0e2415ed04",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/usuarios/{_TwjTWdwOiBQHn1pu}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"usuarios",
+						"{_TwjTWdwOiBQHn1pu}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "editar usuario",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "0630e8a1-bd4a-4fad-a74f-c56cb544f2cc",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});\r",
+							"pm.test(\"Your test name\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.value).to.eql(100);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"id": "47390288-0ef7e364-414a-4714-a493-b5a1e064613c",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"nome\": \"Fulana rodrigues\",\r\n  \"email\": \"fubanga@qa.com.br\",\r\n  \"password\": \"teste\",\r\n  \"administrador\": \"true\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/usuarios/{_id}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"usuarios",
+						"{_id}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{delete }}",
+			"id": "47390288-9922ef1f-1f46-482c-8a12-65093a0f766e",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{delete }}usuarios/unczwQj2nXjInXLo",
+					"host": [
+						"{{delete }}usuarios"
+					],
+					"path": [
+						"unczwQj2nXjInXLo"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{cadastro}}",
+			"id": "47390288-c63c38fc-02f6-44b3-8a99-0cef5551a7b3",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"nome\": \"chloe moretz\",\r\n  \"email\": \"chloemoretz@qa.com.br\",\r\n  \"password\": \"teste\",\r\n  \"administrador\": \"true\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{cadastro}}usuarios/",
+					"host": [
+						"{{cadastro}}usuarios"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{id}}",
+			"id": "47390288-ec6cd8ac-c093-44ed-a38c-f59f9e281715",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{id}}usuarios/TwjTWdwOiBQHn1pu",
+					"host": [
+						"{{id}}usuarios"
+					],
+					"path": [
+						"TwjTWdwOiBQHn1pu"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{editar}}",
+			"id": "47390288-e10ac653-2752-4596-aab1-413651914a7d",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"nome\": \"Fulano da Silva\",\r\n  \"email\": \"beltrano@qa.com.br\",\r\n  \"password\": \"joao54321\",\r\n  \"administrador\": \"true\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{editar}}usuario/TwjTWdwOiBQHn1pu",
+					"host": [
+						"{{editar}}usuario"
+					],
+					"path": [
+						"TwjTWdwOiBQHn1pu"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
