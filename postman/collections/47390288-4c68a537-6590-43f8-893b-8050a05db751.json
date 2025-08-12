@@ -1,0 +1,295 @@
+{
+	"info": {
+		"_postman_id": "47390288-4c68a537-6590-43f8-893b-8050a05db751",
+		"name": "ebac",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "usuarios cadastrados",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f61f65b5-0a96-4c06-9a23-7769d97b6edc",
+						"exec": [
+							"pm.test(\"Status code é 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Retorna lista de usuários\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData).to.be.an(\"array\");\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"id": "47390288-9049bd08-3de2-481d-b214-919d11365eb2",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"nome\": \"paulo sergio\",\r\n  \"email\": \"paulin@qa.com.br\",\r\n  \"password\": \"teste\",\r\n  \"administrador\": \"true\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/usuarios/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"usuarios",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "cadastros de usuarios",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "eb70e359-fb91-4733-baf1-d7520b7c603c",
+						"exec": [
+							"pm.test(\"Status code é 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Resposta contém ID do usuário\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData).to.have.property(\"id\");\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"id": "47390288-caca7159-ca8d-4e12-bb2a-21c100099603",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"nome\": \"lolzinjho\",\r\n  \"email\": \"lolzeiro@qa.com.br\",\r\n  \"password\": \"teste\",\r\n  \"administrador\": \"true\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/usuarios",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"usuarios"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "producurar id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "e62c6974-a166-4327-9e3e-d1e10ea77aa7",
+						"exec": [
+							"pm.test(\"Status code é 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Usuário retornado tem o ID correto\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.id).to.eql(1);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"id": "47390288-0ebd5cd9-d7c4-46e7-8a80-75d614d34b53",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/usuarios/0BOoY9HUNLCgHi8J",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"usuarios",
+						"0BOoY9HUNLCgHi8J"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "excluir",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "6167c214-a4f0-4d56-96fa-fe92333f0784",
+						"exec": [
+							"pm.test(\"Status code é 200 ou 204\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([200, 204]);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"id": "47390288-2758669f-9ce7-4963-a1e8-488c5c9288ce",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/usuarios/0BOoY9HUNLCgHi8J",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"usuarios",
+						"0BOoY9HUNLCgHi8J"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "atualizar cadastro",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "62e8271a-8ddb-4cf1-8135-e88bc0274cdb",
+						"exec": [
+							"pm.test(\"Status code é 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Nome foi atualizado\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.nome).to.eql(\"João Atualizado\");\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"id": "47390288-d6738a8b-ad11-4430-be38-48d4788aa8f0",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"nome\": \"tacui silva\",\r\n  \"email\": \"ghjddso@qa.com.br\",\r\n  \"password\": \"teste\",\r\n  \"administrador\": \"true\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/usuarios/JZR1SxHUZFgXFBCp",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"usuarios",
+						"JZR1SxHUZFgXFBCp"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{cadastro}}",
+			"id": "47390288-d2c3fead-9286-4a36-a73c-d41ba9f2e7e5",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"nome\": \"paulao sergio\",\r\n  \"email\": \"paulinao@qa.com.br\",\r\n  \"password\": \"teste\",\r\n  \"administrador\": \"true\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{cadastro}}usuarios",
+					"host": [
+						"{{cadastro}}usuarios"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{usuarios}}",
+			"id": "47390288-91b70c56-98a9-4d7a-b5b1-a0b0220dca36",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{usuarios}}usuarios",
+					"host": [
+						"{{usuarios}}usuarios"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
