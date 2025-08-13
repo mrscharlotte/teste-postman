@@ -192,6 +192,11 @@
 						"exec": [
 							"pm.test(\"Status code é 200 ou 204\", function () {\r",
 							"    pm.expect(pm.response.code).to.be.oneOf([200, 204]);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Mensagem de exclusão correta\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.mensagem).to.eql(\"Usuário excluído com sucesso\");\r",
 							"});"
 						],
 						"type": "text/javascript",
