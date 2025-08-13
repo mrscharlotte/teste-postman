@@ -190,14 +190,21 @@
 					"script": {
 						"id": "6167c214-a4f0-4d56-96fa-fe92333f0784",
 						"exec": [
-							"pm.test(\"Status code é 200 ou 204\", function () {\r",
-							"    pm.expect(pm.response.code).to.be.oneOf([200, 204]);\r",
+							"pm.test(\"Status code é 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
 							"});\r",
 							"\r",
-							"pm.test(\"Mensagem de exclusão correta\", function () {\r",
+							"pm.test(\"Nome foi atualizado\", function () {\r",
 							"    var jsonData = pm.response.json();\r",
-							"    pm.expect(jsonData.mensagem).to.eql(\"Usuário excluído com sucesso\");\r",
-							"});"
+							"    pm.expect(jsonData.nome).to.eql(\"João Atualizado\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Campos obrigatórios permanecem\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData).to.have.property(\"id\");\r",
+							"    pm.expect(jsonData).to.have.property(\"email\");\r",
+							"});\r",
+							""
 						],
 						"type": "text/javascript",
 						"packages": {}
