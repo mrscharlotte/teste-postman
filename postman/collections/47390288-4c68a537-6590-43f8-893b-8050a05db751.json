@@ -76,6 +76,8 @@
 					"script": {
 						"id": "eb70e359-fb91-4733-baf1-d7520b7c603c",
 						"exec": [
+							"pm.collectionVariables.set(\"emailEnviado\", pm.request.body.formdata.find(f => f.key === \"email\").value);\r",
+							"\r",
 							"pm.test(\"Status code é 201\", function () {\r",
 							"    pm.response.to.have.status(201);\r",
 							"});\r",
@@ -83,6 +85,16 @@
 							"pm.test(\"Resposta contém ID do usuário\", function () {\r",
 							"    var jsonData = pm.response.json();\r",
 							"    pm.expect(jsonData).to.have.property(\"id\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Email cadastrado corresponde ao enviado\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.email).to.eql(pm.collectionVariables.get(\"emailEnviado\"));\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Mensagem de sucesso correta\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.mensagem).to.eql(\"Usuário cadastrado com sucesso\");\r",
 							"});"
 						],
 						"type": "text/javascript",
