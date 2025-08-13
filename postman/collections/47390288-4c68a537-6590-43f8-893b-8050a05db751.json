@@ -248,6 +248,12 @@
 							"pm.test(\"Nome foi atualizado\", function () {\r",
 							"    var jsonData = pm.response.json();\r",
 							"    pm.expect(jsonData.nome).to.eql(\"João Atualizado\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Campos obrigatórios permanecem\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData).to.have.property(\"id\");\r",
+							"    pm.expect(jsonData).to.have.property(\"email\");\r",
 							"});"
 						],
 						"type": "text/javascript",
